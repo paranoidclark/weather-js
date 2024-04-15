@@ -1,1 +1,1 @@
-# weather-js
+# Weather App by Clark
