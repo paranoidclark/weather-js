@@ -11,18 +11,21 @@
 <body>
     <section class="main-container">
         <h1>Weather Information</h1>
-        <% weatherData.forEach(function(cityData) { %>
-            <div class="city">
-                <h2>
-                    <%= cityData.location.name %>
-                </h2>
-                <p>Temperature: <%= cityData.current.temperature %> °C</p>
-                <p>Sky: <%= cityData.current.skytext %>
-                </p>
-                <!-- Add more weather information here as needed -->
-            </div>
-            <% }); %>
-
+        <div class="city-container">
+            <% weatherData.forEach(function(cityData) { %>
+                <div class="city">
+                    <h2>
+                        <%= cityData.location.name %>
+                    </h2>
+                    <p class="temp">
+                        <%= cityData.current.temperature %> °C
+                    </p>
+                    <p class="text">
+                        <%= cityData.current.skytext %>
+                    </p>
+                </div>
+                <% }); %>
+        </div>
     </section>
 
     <script src="server.js"></script>
