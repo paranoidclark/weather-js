@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/weather-style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="main-container">
+        <h1>Weather Information</h1>
+        <div class="city-container">
+            <% weatherData.forEach(function(cityData) { %>
+                <div class="city">
+                    <h2>
+                        <%= cityData.location.name %>
+                    </h2>
+                    <p class="temp">
+                        <%= cityData.current.temperature %> °C
+                    </p>
+                    <p class="text">
+                        <%= cityData.current.skytext %>
+                    </p>
+                </div>
+                <% }); %>
+        </div>
+    </section>
+
+    <script src="server.js"></script>
+</body>
+
+</html>
