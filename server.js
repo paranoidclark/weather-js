@@ -36,44 +36,68 @@ app.get('/index', (req, res) => {
     res.redirect('/')
 })
 
-app.get('/weather', function (req, res) {
-    const cities = ['San Francisco, CA', 'Davao City, Philippines', 'Paris, France']
-    const weatherData = []
-    const temperature = []
-    const listOfCities = []
+// app.get('/weather', function (req, res) {
+//     const cities = ['San Francisco, CA', 'Davao City, Philippines', 'Paris, France']
+//     const weatherData = []
+//     const temperature = []
+//     const listOfCities = []
 
-    const getWeather = (city) => {
+//     const getWeather = (city) => {
 
-        weather.find({ search: city, degreeType: 'C' }, function (err, result) {
-            if (err) {
-                res.send("Error! walay weather diri");
-                console.log(err);
-            } else {
-                weatherData.push(result[0]);
-                temperature.push(result[0].current.temperature);
-                listOfCities.push(result[0].location.name);
-                if (weatherData.length === cities.length) {
-                    res.render('weather', { temperature: temperature, city: listOfCities, weatherData: weatherData });
-                }
-            }
-        });
-    };
+//         weather.find({ search: city, degreeType: 'C' }, function (err, result) {
+//             if (err) {
+//                 res.send("Error! walay weather diri");
+//                 console.log(err);
+//             } else {
+//                 weatherData.push(result[0]);
+//                 temperature.push(result[0].current.temperature);
+//                 listOfCities.push(result[0].location.name);
+//                 if (weatherData.length === cities.length) {
+//                     res.render('weather', { temperature: temperature, city: listOfCities, weatherData: weatherData });
+//                 }
+//             }
+//         });
+//     };
 
-    cities.forEach(city => {
-        getWeather(city);
-    })
-});
+//     cities.forEach(city => {
+//         getWeather(city);
+//     })
+// });
 
 app.get('/paris-weather', function (req, res) {
-    res.render('paris-weather', { myData: fulldata })
+    weather.find({ search: "Paris, France", degreeType: 'C' }, function (err, result) {
+        if (err || !result || result.length === 0) {
+            res.send("Error! walay weather diri!");
+            console.log(err);
+        } else {
+            const weatherData = result;
+            res.render('paris-weather', { weatherData: weatherData });
+        }
+    })
 })
 
 app.get('/davao-weather', function (req, res) {
-    res.render('davao-weather', { myData: fulldata })
+    weather.find({ search: "Davao City, Philippines", degreeType: 'C' }, function (err, result) {
+        if (err || !result || result.length === 0) {
+            res.send("Error! walay weather diri!");
+            console.log(err);
+        } else {
+            const weatherData = result;
+            res.render('davao-weather', { weatherData: weatherData });
+        }
+    })
 })
 
 app.get('/sanfran-weather', function (req, res) {
-    res.render('sanfran-weather', { myData: fulldata })
+    weather.find({ search: "San Francisco, CA", degreeType: 'C' }, function (err, result) {
+        if (err || !result || result.length === 0) {
+            res.send("Error! walay weather diri!");
+            console.log(err);
+        } else {
+            const weatherData = result;
+            res.render('sanfran-weather', { weatherData: weatherData });
+        }
+    })
 })
 
 app.use((req, res) => {

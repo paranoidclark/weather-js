@@ -15,58 +15,56 @@
 </head>
 
 <body>
-    <main>
-        <section id="first-page">
-            <div id="navigation">`
-                <div class="face-icon">
-                    <a href="index"><img src="./imgs/favicon-title.png" alt="my face" class="myFaceIcon"></a>
+    <section id="first-page">
+        <div id="navigation">
+            <div class="face-icon">
+                <a href="index"><img src="./imgs/favicon-title.png" alt="my face" class="myFaceIcon"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index" class="first-li">Home</a></li>
+                    <li>
+                        <a href="about" class="first-li">About</a>
+                    </li>
+                    <li>
+                        <a href="portfolio" class="first-li">Projects</a>
+                    </li>
+                    <li class="dropdown-container">
+                        <a href="#" class="first-li main-weather-btn">Weather</a>
+                        <div class="drop-btn">
+                            <a href="paris-weather" class="weather-btn">Paris, France</a>
+                            <a href="sanfran-weather" class="weather-btn">San Francisco, CA</a>
+                            <a href="davao-weather" class="weather-btn">Davao City, Philippines</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="project" class="first-contact-btn">Etch a Sketch!</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="landing-section">
+            <div class="landing-section-txt">
+                <div class="heading">
+                    <header>Hey, I'm <span>
+                            <%= myData[0].first_name %>
+                        </span> 👋</header>
+                    <p>Your part time friendly neighborhood <span>student</span> and full time <span>single</span>. I am a passionate individual on a journey to mastering the art of full stack development. Join me on this exciting adventure of learning and growth as I navigate the world of programming languages, frameworks, and databases.</p>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="index" class="first-li">Home</a></li>
-                        <li>
-                            <a href="about" class="first-li">About</a>
-                        </li>
-                        <li>
-                            <a href="portfolio" class="first-li">Projects</a>
-                        </li>
-                        <li class="dropdown-container">
-                            <a href="#" class="first-li main-weather-btn">Weather</a>
-                            <div class="drop-btn">
-                                <a href="paris-weather" class="weather-btn">Paris, Italy</a>
-                                <a href="sanfran-weather" class="weather-btn">San Francisco, CA</a>
-                                <a href="davao-weather" class="weather-btn">Davao City, Philippines</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="project" class="first-contact-btn">Etch a Sketch!</a>
-                        </li>
-                    </ul>
-                </nav>
+
+                <div class="sub-button">
+                    <a href="about.html" class="learn">Learn more</a>
+                    &nbsp;
+                    <a href="project.html" class="second-contact-btn">Etch a Sketch!</a>
+                </div>
             </div>
 
-            <div id="landing-section">
-                <div class="landing-section-txt">
-                    <div class="heading">
-                        <header>Hey, I'm <span>
-                                <%= myData[0].first_name %>
-                            </span> 👋</header>
-                        <p>Your part time friendly neighborhood <span>student</span> and full time <span>single</span>. I am a passionate individual on a journey to mastering the art of full stack development. Join me on this exciting adventure of learning and growth as I navigate the world of programming languages, frameworks, and databases.</p>
-                    </div>
-
-                    <div class="sub-button">
-                        <a href="about.html" class="learn">Learn more</a>
-                        &nbsp;
-                        <a href="project.html" class="second-contact-btn">Etch a Sketch!</a>
-                    </div>
-                </div>
-
-                <div class="landing-section-img">
-                    <img src="./imgs/illustration-landing.png" alt="Graphic Illustration" class="first-img" />
-                </div>
+            <div class="landing-section-img">
+                <img src="./imgs/illustration-landing.png" alt="Graphic Illustration" class="first-img" />
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 </body>
 
 </html>
