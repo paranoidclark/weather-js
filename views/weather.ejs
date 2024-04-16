@@ -4,29 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/weather-style.css">
-    <title>Document</title>
+    <title>Weather ⛅</title>
 </head>
 
 <body>
-    <section class="main-container">
-        <h1>Weather Information</h1>
-        <div class="city-container">
-            <% weatherData.forEach(function(cityData) { %>
-                <div class="city">
-                    <h2>
-                        <%= cityData.location.name %>
-                    </h2>
-                    <p class="temp">
-                        <%= cityData.current.temperature %> °C
-                    </p>
-                    <p class="text">
-                        <%= cityData.current.skytext %>
-                    </p>
+    <main>
+        <section id="first-page">
+            <div id="navigation">
+                <div class="face-icon">
+                    <a href="index"><img src="./imgs/favicon-title.png" alt="my face" class="myFaceIcon"></a>
                 </div>
-                <% }); %>
-        </div>
-    </section>
+                <nav>
+                    <ul>
+                        <li><a href="index" class="first-li">Home</a></li>
+                        <li>
+                            <a href="about" class="first-li">About</a>
+                        </li>
+                        <li>
+                            <a href="portfolio" class="first-li">Projects</a>
+                        </li>
+                        <li>
+                            <a href="weather" class="first-li">Weather</a>
+                        </li>
+                        <li>
+                            <a href="project" class="first-contact-btn">Etch a Sketch!</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <section class="main-container">
+                <h1>Weather Information</h1>
+                <div class="city-container">
+                    <% weatherData.forEach(function(cityData) { %>
+                        <div class="city">
+                            <h2>
+                                <%= cityData.location.name %>
+                            </h2>
+                            <p class="temp">
+                                <%= cityData.current.temperature %> °C
+                            </p>
+                            <p class="text">
+                                <%= cityData.current.skytext %>
+                            </p>
+                        </div>
+                        <% }); %>
+                </div>
+            </section>
+        </section>
+    </main>
 
     <script src="server.js"></script>
 </body>
