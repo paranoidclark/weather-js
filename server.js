@@ -64,6 +64,18 @@ app.get('/weather', function (req, res) {
     })
 });
 
+app.get('/paris-weather', function (req, res) {
+    res.render('paris-weather', { myData: fulldata })
+})
+
+app.get('/davao-weather', function (req, res) {
+    res.render('davao-weather', { myData: fulldata })
+})
+
+app.get('/sanfran-weather', function (req, res) {
+    res.render('sanfran-weather', { myData: fulldata })
+})
+
 app.use((req, res) => {
     res.status(404).sendFile('./views/error.html', { root: __dirname })
 })
