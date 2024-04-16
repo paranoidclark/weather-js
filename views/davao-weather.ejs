@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/paris-style.css">
+    <title>Paris, France 🗼</title>
+</head>
+
+<body>
+    <main>
+        <section class="first-page">
+            <div id="navigation">
+                <div class="face-icon">
+                    <a href="index"><img src="./imgs/favicon-title.png" alt="my face" class="myFaceIcon"></a>
+
+                </div>
+                <header>
+                    <%= weatherData[0].location.name %> <span> | Weather Information</span>
+                        <img src="./imgs/philippines-flag.png" alt="" srcset="">
+                </header>
+                <nav>
+                    <ul>
+                        <li><a href="index" class="first-li">Home</a></li>
+                        <li>
+                            <a href="about" class="first-li">About</a>
+                        </li>
+                        <li>
+                            <a href="portfolio" class="first-li">Projects</a>
+                        </li>
+                        <li class="dropdown-container">
+                            <a href="#" class="first-li main-weather-btn">Weather</a>
+                            <div class="drop-btn">
+                                <a href="paris-weather" class="weather-btn">Paris, France</a>
+                                <a href="sanfran-weather" class="weather-btn">San Francisco, CA</a>
+                                <a href="davao-weather" class="weather-btn">Davao City, Philippines</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="project" class="first-contact-btn">Etch a Sketch!</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+
+        <section class="main-container">
+            <div class="today">
+                <div class="weather-imgs" style="background-image: url('./imgs-css/2.png');">
+                    <img src="<%= weatherData[0].current.imageUrl %>" alt="" class="weather-icon">
+                </div>
+
+                <div class="weather-details">
+                    <div class="weather-details-container">
+                        <h2 class="weather-city">
+                            <%= weatherData[0].location.name%>
+                        </h2>
+                        <div class="weather-date">
+                            <h3 class="day">
+                                <%= weatherData[0].current.day%> | <%= weatherData[0].current.date%> | <%= weatherData[0].current.observationtime%>
+                            </h3>
+                        </div>
+                    </div>
+                    <h1 class="weather-temp">
+                        <%= weatherData[0].current.temperature%><span>°C</span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="tomorrow">
+                <div class="tomorrow-imgs" style="background-image: url('./imgs-css/2.png'); background-position: top; background-size: cover;"">
+                    <img src=" <%=weatherData[0].current.imageUrl %>" alt="" class="tomorrow-icon">
+                </div>
+
+                <div class="tomorrow-details">
+                    <div class="tomorrow-details-container">
+                        <h2 class="tomorrow-city">
+                            <%= weatherData[0].location.name%>
+                        </h2>
+                        <div class="tomorrow-date">
+                            <h3 class="tomorrow-day">
+                                <%= weatherData[0].forecast[1].day%> <br>
+                                    <%= weatherData[0].forecast[1].date%> <br>
+                            </h3>
+                        </div>
+                    </div>
+                    <h1 class="tomorrow-temp">
+                        <%= weatherData[0].forecast[1].low%><span>°C</span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="tomorrow">
+                <div class="tomorrow-imgs" style="background-image: url('./imgs-css/2.png'); background-position: top; background-size: cover;"">
+                    <img src=" <%=weatherData[0].current.imageUrl %>" alt="" class="tomorrow-icon">
+                </div>
+
+                <div class="tomorrow-details">
+                    <div class="tomorrow-details-container">
+                        <h2 class="tomorrow-city">
+                            <%= weatherData[0].location.name%>
+                        </h2>
+                        <div class="tomorrow-date">
+                            <h3 class="tomorrow-day">
+                                <%= weatherData[0].forecast[2].day%> <br>
+                                    <%= weatherData[0].forecast[2].date%> <br>
+                            </h3>
+                        </div>
+                    </div>
+                    <h1 class="tomorrow-temp">
+                        <%= weatherData[0].forecast[2].low%><span>°C</span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="tomorrow">
+                <div class="tomorrow-imgs" style="background-image: url('./imgs-css/2.png'); background-position: top; background-size: cover;"">
+                    <img src=" <%=weatherData[0].current.imageUrl %>" alt="" class="tomorrow-icon">
+                </div>
+
+                <div class="tomorrow-details">
+                    <div class="tomorrow-details-container">
+                        <h2 class="tomorrow-city">
+                            <%= weatherData[0].location.name%>
+                        </h2>
+                        <div class="tomorrow-date">
+                            <h3 class="tomorrow-day">
+                                <%= weatherData[0].forecast[3].day%> <br>
+                                    <%= weatherData[0].forecast[3].date%> <br>
+                            </h3>
+                        </div>
+                    </div>
+                    <h1 class="tomorrow-temp">
+                        <%= weatherData[0].forecast[3].low%><span>°C</span>
+                    </h1>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
