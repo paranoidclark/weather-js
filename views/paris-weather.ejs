@@ -142,6 +142,34 @@
                     </h1>
                 </div>
             </div>
+
+            <div class="tomorrow">
+                <div class="tomorrow-imgs" style="background-image: url('./imgs-css/1.png'); background-position: top; background-size: cover;"">
+                    <img src=" <%=weatherData[0].current.imageUrl %>" alt="" class="tomorrow-icon">
+                </div>
+
+                <div class="tomorrow-details">
+                    <div class="tomorrow-details-container">
+                        <h2 class="tomorrow-city">
+                            <%= weatherData[0].location.name%>
+                        </h2>
+                        <div class="tomorrow-date">
+                            <h3 class="tomorrow-day">
+                                <%= weatherData[0].forecast[4].day%> <br>
+                                    <%= weatherData[0].forecast[4].date%> <br>
+                            </h3>
+                        </div>
+                    </div>
+                    <h1 class="tomorrow-temp">
+                        <%= weatherData[0].forecast[4].low%><span>°C</span>
+                    </h1>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="footer">
+            <h4>© 2024 Portfolio by <span>Clark Paran</span> | All Rights Reserved</h4>
         </section>
     </main>
 </body>
