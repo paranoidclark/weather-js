@@ -3,8 +3,27 @@ const express = require('express')
 const { fulldata } = require('./mymodule')
 const app = express()
 app.set('view engine', 'ejs')
+const cors = require('cors')
+app.use(
+    cors({
+        origin: true,
+        credentials: true,
+        optionsSuccessStatus: 200,
+    }))
 
 const port = 8000;
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./code-3ac2d-firebase-adminsdk-2hy4g-966999037a.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore()
+const memberColl = db.collection('Portfolio')
+const studentColl = db.collection('student')
 
 app.use((req, res, next) => {
     console.log("Request Made");
@@ -16,8 +35,14 @@ app.use((req, res, next) => {
 app.use(express.static('public'));
 app.use(express.static('views'))
 
-app.get('/', function (req, res) {
-    res.render('index', { myData: fulldata })
+app.get('/', async function (req, res) {
+    // const items = await memberColl.get();
+    const studentSnapshot = await studentColl.get();
+    const studentsList = studentSnapshot.docs.map(doc => doc.data());
+    res.json(studentsList);
+    console.log(items.docs.length);
+    let data = { itemData: items.docs, myData: fulldata }
+    res.render('index', data);
 })
 
 app.get('/about', function (req, res) {
@@ -35,34 +60,6 @@ app.get('/project', function (req, res) {
 app.get('/index', (req, res) => {
     res.redirect('/')
 })
-
-// app.get('/weather', function (req, res) {
-//     const cities = ['San Francisco, CA', 'Davao City, Philippines', 'Paris, France']
-//     const weatherData = []
-//     const temperature = []
-//     const listOfCities = []
-
-//     const getWeather = (city) => {
-
-//         weather.find({ search: city, degreeType: 'C' }, function (err, result) {
-//             if (err) {
-//                 res.send("Error! walay weather diri");
-//                 console.log(err);
-//             } else {
-//                 weatherData.push(result[0]);
-//                 temperature.push(result[0].current.temperature);
-//                 listOfCities.push(result[0].location.name);
-//                 if (weatherData.length === cities.length) {
-//                     res.render('weather', { temperature: temperature, city: listOfCities, weatherData: weatherData });
-//                 }
-//             }
-//         });
-//     };
-
-//     cities.forEach(city => {
-//         getWeather(city);
-//     })
-// });
 
 app.get('/paris-weather', function (req, res) {
     weather.find({ search: "Paris, France", degreeType: 'C' }, function (err, result) {
