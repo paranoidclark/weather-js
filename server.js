@@ -11,7 +11,9 @@ app.use(
         optionsSuccessStatus: 200,
     }))
 
-const port = 8000;
+app.use(express.json())
+
+const port = 5173;
 
 var admin = require("firebase-admin");
 
@@ -36,13 +38,24 @@ app.use(express.static('public'));
 app.use(express.static('views'))
 
 app.get('/', async function (req, res) {
-    // const items = await memberColl.get();
+    const items = await memberColl.get();
     const studentSnapshot = await studentColl.get();
     const studentsList = studentSnapshot.docs.map(doc => doc.data());
     res.json(studentsList);
     console.log(items.docs.length);
     let data = { itemData: items.docs, myData: fulldata }
     res.render('index', data);
+})
+
+app.get('/addstudent', async function (req, res) {
+    const { name, age, course, subjects } = req.body;
+    try {
+        const docRef = await studentColl.add({ name, age, course, subjects })
+        console.log(docRef.id);
+    } catch (error) {
+        console.error('Error adding student', error);
+        res.status(500).json({ error: 'Failed to add student' });
+    }
 })
 
 app.get('/about', function (req, res) {
